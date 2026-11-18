@@ -1,0 +1,1612 @@
+/* Hello Dolly plugin (wp-content/plugins/hello.php) — hides floated #dolly on StaffCore screens */
+body.mf-staffcore-admin #dolly {
+    display: none !important;
+}
+
+/* StaffCore admin: full-width Tabler shell */
+body.mf-staffcore-admin #adminmenuback,
+body.mf-staffcore-admin #adminmenuwrap {
+    display: none;
+}
+
+body.mf-staffcore-admin #wpcontent,
+body.mf-staffcore-admin #wpfooter {
+    margin-left: 0;
+}
+
+body.mf-staffcore-admin #wpbody-content {
+    padding-bottom: 0;
+}
+
+body.mf-staffcore-admin #wpfooter {
+    display: none;
+}
+
+body.mf-staffcore-admin #wpcontent {
+    padding-left: 0;
+}
+
+body.mf-staffcore-admin .mf-staffcore-wrap.wrap {
+    margin: 0;
+    max-width: none;
+    padding: 0;
+}
+
+/* Offset for WordPress admin bar (#wpadminbar) */
+body.admin-bar.mf-staffcore-admin .staffcore-admin-wrap .navbar-vertical {
+    top: 32px;
+    height: calc(100vh - 32px);
+}
+
+body.admin-bar.mf-staffcore-admin .staffcore-admin-wrap .navbar-vertical .container-fluid {
+    padding-top: 0.5rem;
+}
+
+body.admin-bar.mf-staffcore-admin .staffcore-admin-wrap .page-wrapper {
+    margin-top: 32px;
+    min-height: calc(100vh - 32px);
+}
+
+@media screen and (max-width: 782px) {
+    body.admin-bar.mf-staffcore-admin .staffcore-admin-wrap .navbar-vertical {
+        top: 46px;
+        height: calc(100vh - 46px);
+    }
+
+    body.admin-bar.mf-staffcore-admin .staffcore-admin-wrap .page-wrapper {
+        margin-top: 46px;
+        min-height: calc(100vh - 46px);
+    }
+}
+
+.staffcore-admin-wrap.page {
+    min-height: 100vh;
+}
+
+/* WordPress admin notices — relocated into .page-wrapper by staffcore-ui.js */
+.staffcore-wp-admin-notices {
+    padding: 1rem 0 0;
+}
+
+.staffcore-wp-admin-notices .container-fluid {
+    padding-top: 0;
+}
+
+.staffcore-wp-admin-notices:not(:has(.alert, .notice, .update-nag, .updated, .error)) {
+    display: none;
+}
+
+.staffcore-wp-admin-notices .notice,
+.staffcore-wp-admin-notices .update-nag,
+.staffcore-wp-admin-notices .updated,
+.staffcore-wp-admin-notices .error {
+    margin: 0 0 0.75rem;
+}
+
+/* Fallback before JS relocates notices out of #wpbody-content (avoid sidebar-offset flash) */
+@media (min-width: 992px) {
+    body.mf-staffcore-admin #wpbody-content > .notice,
+    body.mf-staffcore-admin #wpbody-content > .update-nag,
+    body.mf-staffcore-admin #wpbody-content > .updated,
+    body.mf-staffcore-admin #wpbody-content > .error {
+        visibility: hidden;
+        height: 0;
+        margin: 0 !important;
+        padding: 0 !important;
+        overflow: hidden;
+        border: 0;
+    }
+}
+
+
+/* Modals/backdrop above WordPress #wpadminbar (z-index: 99999) */
+body.mf-staffcore-admin.modal-open .modal-backdrop {
+    z-index: 100000 !important;
+}
+
+body.mf-staffcore-admin.modal-open .modal {
+    z-index: 100001 !important;
+}
+
+body.mf-staffcore-admin.modal-open .toast-container {
+    z-index: 100002 !important;
+}
+
+/* Keep scrollbar visible when modal open — avoid layout shift from overflow:hidden + padding-right */
+body.mf-staffcore-admin.modal-open {
+    overflow: auto !important;
+    padding-right: 0 !important;
+}
+
+/* Dark theme: Tabler default page background (--tblr-gray-900) */
+#staffcore-app[data-bs-theme="dark"] {
+    --tblr-body-bg: #111827;
+    background-color: #111827;
+}
+
+#staffcore-app[data-bs-theme="dark"] .page-wrapper,
+#staffcore-app[data-bs-theme="dark"] .page-body {
+    background-color: #111827;
+}
+
+body.mf-staffcore-admin:has(#staffcore-app[data-bs-theme="dark"]) #wpcontent,
+body.mf-staffcore-admin:has(#staffcore-app[data-bs-theme="dark"]) #wpbody {
+    background-color: #111827;
+}
+
+/* Full-width fluid content (tables, cards) */
+.staffcore-admin-wrap .page-header .container-fluid,
+.staffcore-admin-wrap .page-body .container-fluid {
+    max-width: 100%;
+    width: 100%;
+}
+
+.staffcore-admin-wrap .page-body .card,
+.staffcore-admin-wrap .page-body .table-responsive,
+.staffcore-admin-wrap .page-body .table {
+    max-width: 100%;
+}
+
+.staffcore-admin-wrap .nav-link-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 1.5rem;
+    margin-right: 0.5rem;
+}
+
+.staffcore-admin-wrap .nav-link-icon .ti {
+    font-size: 1.25rem;
+    line-height: 1;
+}
+
+/* Sidebar layout: no phantom scroll; footer pinned to bottom */
+.staffcore-admin-wrap .navbar-vertical {
+    overflow: hidden;
+}
+
+.staffcore-admin-wrap .navbar-vertical .container-fluid {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    max-height: 100%;
+    min-height: 0;
+    overflow: hidden;
+}
+
+.staffcore-admin-wrap .navbar-vertical #sidebar-menu {
+    display: block;
+    flex: 0 0 auto;
+    flex-grow: 0;
+    height: auto;
+    overflow: visible;
+}
+
+.staffcore-admin-wrap .navbar-vertical .navbar-collapse {
+    flex: 0 0 auto;
+    flex-grow: 0;
+    overflow: visible;
+}
+
+.staffcore-admin-wrap .navbar-vertical .navbar-nav {
+    overflow: visible;
+}
+
+.staffcore-admin-wrap .staffcore-sidebar-spacer {
+    flex: 1 1 auto;
+    min-height: 0;
+}
+
+.staffcore-admin-wrap .staffcore-sidebar-back {
+    margin-top: 1.75rem;
+    padding: 0 0.5rem;
+}
+
+.staffcore-admin-wrap .staffcore-back-wp {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.35rem;
+    font-size: 0.75rem;
+    padding: 0.2rem 0.55rem;
+    line-height: 1.4;
+}
+
+.staffcore-admin-wrap .staffcore-back-wp .ti {
+    font-size: 0.9rem;
+    line-height: 1;
+}
+
+.staffcore-admin-wrap .staffcore-sidebar-footer {
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 0;
+    padding-top: 1rem;
+    padding-bottom: 0.75rem;
+    border-top: 1px solid var(--tblr-border-color);
+}
+
+.staffcore-admin-wrap .staffcore-sidebar-plan {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.35rem;
+    width: 100%;
+    margin-bottom: 0.75rem;
+    padding: 0 0.5rem;
+    text-align: center;
+}
+
+.staffcore-admin-wrap .staffcore-edition-badge {
+    font-size: 0.65rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+}
+
+.staffcore-admin-wrap .staffcore-pro-upsell-link {
+    color: var(--tblr-muted);
+    text-decoration: none;
+}
+
+.staffcore-admin-wrap .staffcore-pro-upsell-link:hover {
+    color: var(--tblr-primary);
+    text-decoration: underline;
+}
+
+.staffcore-admin-wrap .staffcore-sidebar-upgrade-link {
+    font-size: 0.75rem;
+}
+
+.staffcore-admin-wrap .staffcore-pro-upsell-card .staffcore-pro-upsell-features {
+    margin-bottom: 0;
+    padding-left: 1.25rem;
+}
+
+.staffcore-admin-wrap .staffcore-mobile-nav-footer .staffcore-sidebar-plan {
+    margin-bottom: 1rem;
+}
+
+.staffcore-admin-wrap .alert .staffcore-pro-upsell-link {
+    color: inherit;
+    font-weight: 600;
+}
+
+.staffcore-admin-wrap .alert .staffcore-pro-upsell-link:hover {
+    color: var(--tblr-primary);
+}
+
+.staffcore-admin-wrap .staffcore-theme-switch {
+    align-self: center;
+    border: 0;
+    background: transparent;
+    padding: 0;
+    cursor: pointer;
+    line-height: 0;
+}
+
+.staffcore-admin-wrap .staffcore-theme-switch:focus-visible .staffcore-theme-switch-track {
+    outline: 2px solid var(--tblr-primary);
+    outline-offset: 2px;
+}
+
+.staffcore-admin-wrap .staffcore-theme-switch-track {
+    display: block;
+    width: 3.25rem;
+    height: 1.75rem;
+    border-radius: 999px;
+    background: var(--tblr-secondary);
+    position: relative;
+    transition: background-color 0.2s ease;
+}
+
+.staffcore-admin-wrap .staffcore-theme-switch-thumb {
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    width: 1.35rem;
+    height: 1.35rem;
+    border-radius: 50%;
+    background: var(--tblr-bg-surface, #fff);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+    transition: transform 0.2s ease;
+}
+
+.staffcore-admin-wrap .staffcore-theme-switch.is-light .staffcore-theme-switch-thumb {
+    transform: translateX(1.4rem);
+}
+
+.staffcore-admin-wrap .staffcore-theme-icon {
+    font-size: 0.95rem;
+    line-height: 1;
+}
+
+.staffcore-admin-wrap .staffcore-theme-icon-sun {
+    display: none;
+}
+
+.staffcore-admin-wrap .staffcore-theme-switch.is-light .staffcore-theme-icon-moon {
+    display: none;
+}
+
+.staffcore-admin-wrap .staffcore-theme-switch.is-light .staffcore-theme-icon-sun {
+    display: inline-block;
+}
+
+/* Mobile navigation: hide desktop sidebar, use offcanvas drawer */
+@media (max-width: 991.98px) {
+    .staffcore-admin-wrap > .navbar-vertical {
+        display: none !important;
+    }
+
+    .staffcore-admin-wrap .page-wrapper {
+        margin-left: 0 !important;
+    }
+
+    body.admin-bar.mf-staffcore-admin .staffcore-admin-wrap .page-wrapper {
+        min-height: calc(100vh - 46px);
+    }
+}
+
+.staffcore-mobile-nav {
+    width: min(18rem, 100vw);
+}
+
+.staffcore-mobile-nav-brand {
+    color: inherit;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.staffcore-mobile-nav-brand:hover {
+    color: inherit;
+    text-decoration: none;
+}
+
+.staffcore-mobile-nav .nav-link {
+    border-radius: var(--tblr-border-radius);
+}
+
+.staffcore-mobile-nav-footer .staffcore-back-wp {
+    justify-content: center;
+}
+
+/* Offcanvas above WordPress #wpadminbar (z-index: 99999) on mobile */
+body.mf-staffcore-admin .offcanvas-backdrop.show {
+    z-index: 100000 !important;
+}
+
+body.mf-staffcore-admin .staffcore-mobile-nav.offcanvas.show {
+    z-index: 100001 !important;
+}
+
+body.mf-staffcore-frontend .offcanvas-backdrop.show {
+    z-index: 1040;
+}
+
+body.mf-staffcore-frontend .staffcore-mobile-nav.offcanvas.show {
+    z-index: 1045;
+}
+
+/* Tabler nav-tabs in page header (https://preview.tabler.io/tabs.html) */
+.staffcore-admin-wrap .staffcore-page-tabs .nav-tabs {
+    border-bottom: 1px solid var(--tblr-border-color);
+    margin-bottom: 0;
+}
+
+/* WordPress admin: dd, li { margin-bottom: 6px; } */
+.staffcore-admin-wrap .staffcore-page-tabs .nav-tabs .nav-item,
+.staffcore-admin-wrap .staffcore-page-tabs .nav-tabs li {
+    margin-bottom: 0 !important;
+}
+
+.staffcore-admin-wrap .staffcore-page-tabs .nav-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    padding: 0.5rem 1rem;
+    margin-bottom: -1px;
+    border: 0;
+    border-bottom: 2px solid transparent;
+    border-radius: 0;
+    background: transparent;
+    color: var(--tblr-muted);
+}
+
+.staffcore-admin-wrap .staffcore-page-tabs .nav-link:hover {
+    color: var(--tblr-body-color);
+    border-color: transparent;
+    border-bottom-color: transparent;
+    background: transparent;
+}
+
+.staffcore-admin-wrap .staffcore-page-tabs .nav-link.active {
+    color: var(--tblr-primary);
+    background: transparent;
+    border: 0;
+    border-bottom: 2px solid var(--tblr-primary);
+}
+
+.staffcore-admin-wrap .staffcore-page-tabs .staffcore-tab-icon {
+    font-size: 1.1rem;
+    line-height: 1;
+}
+
+/* Asset table thumbnail beside name */
+.staffcore-admin-wrap .staffcore-asset-name-cell .staffcore-asset-thumb {
+    flex-shrink: 0;
+    width: 2.5rem;
+    height: 2.5rem;
+    background-size: cover;
+    background-position: center;
+}
+
+.staffcore-admin-wrap .staffcore-image-preview-link {
+    margin-left: 0.25rem;
+    word-break: break-all;
+}
+
+/* Image lightbox (above StaffCore modals / WP admin bar) */
+.staffcore-image-lightbox {
+    position: fixed;
+    inset: 0;
+    z-index: 100060;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1.5rem;
+    background: rgba(15, 23, 42, 0.88);
+}
+
+.staffcore-image-lightbox-panel {
+    position: relative;
+    max-width: min(92vw, 56rem);
+    max-height: 92vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.staffcore-image-lightbox-img {
+    max-width: 100%;
+    max-height: calc(92vh - 4rem);
+    object-fit: contain;
+    border-radius: var(--tblr-border-radius, 4px);
+    box-shadow: 0 0.5rem 2rem rgba(0, 0, 0, 0.35);
+}
+
+.staffcore-image-lightbox-close {
+    position: absolute;
+    top: -0.25rem;
+    right: -0.25rem;
+    z-index: 1;
+    filter: invert(1) grayscale(1);
+    opacity: 0.85;
+}
+
+.staffcore-image-lightbox-actions {
+    display: flex;
+    justify-content: center;
+}
+
+/* Page heading: circular icon + title + subtitle */
+.staffcore-admin-wrap .staffcore-page-heading {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.staffcore-admin-wrap .staffcore-page-heading-icon {
+    flex-shrink: 0;
+    width: 3rem;
+    height: 3rem;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--tblr-bg-surface-secondary, var(--tblr-gray-100));
+    color: var(--tblr-secondary, var(--tblr-gray-600));
+    border: 1px solid var(--tblr-border-color, transparent);
+}
+
+.staffcore-admin-wrap .staffcore-page-heading-icon .ti {
+    font-size: 1.5rem;
+    line-height: 1;
+}
+
+.staffcore-admin-wrap .staffcore-page-heading .page-title {
+    font-size: 1.375rem;
+    color: var(--tblr-emphasis-color, var(--tblr-body-color));
+}
+
+.staffcore-admin-wrap .staffcore-page-heading .text-secondary {
+    font-size: 0.875rem;
+    color: var(--tblr-secondary-color, var(--tblr-secondary));
+}
+
+/* Dark theme: Tabler page heading (override WordPress admin h2 colors) */
+#staffcore-app[data-bs-theme="dark"] .staffcore-page-heading .page-title {
+    color: var(--tblr-emphasis-color, #f9fafb) !important;
+}
+
+#staffcore-app[data-bs-theme="dark"] .staffcore-page-heading .text-secondary {
+    color: var(--tblr-secondary-color, var(--tblr-gray-400, #9ca3af)) !important;
+}
+
+#staffcore-app[data-bs-theme="dark"] .staffcore-page-heading-icon {
+    background-color: var(--tblr-bg-surface, var(--tblr-gray-800, #1f2937)) !important;
+    color: var(--tblr-muted, var(--tblr-gray-400, #9ca3af)) !important;
+    border-color: var(--tblr-border-color, #374151) !important;
+}
+
+/* Light theme: Tabler page heading */
+#staffcore-app[data-bs-theme="light"] .staffcore-page-heading .page-title {
+    color: var(--tblr-emphasis-color, var(--tblr-gray-900, #111827)) !important;
+}
+
+#staffcore-app[data-bs-theme="light"] .staffcore-page-heading-icon {
+    background-color: var(--tblr-bg-surface-secondary, var(--tblr-gray-100, #f3f4f6)) !important;
+    color: var(--tblr-secondary, var(--tblr-gray-600, #4b5563)) !important;
+    border-color: var(--tblr-border-color, #e5e7eb) !important;
+}
+
+/* Form controls: reset WordPress admin input/textarea/select styles */
+body.mf-staffcore-admin #staffcore-app .form-control,
+body.mf-staffcore-admin #staffcore-app .form-select,
+body.mf-staffcore-admin #staffcore-app textarea.form-control,
+body.mf-staffcore-admin #staffcore-app input.form-control {
+    background-color: var(--tblr-bg-forms, var(--tblr-bg-surface, #fff)) !important;
+    border: var(--tblr-border-width, 1px) solid var(--tblr-border-color) !important;
+    border-radius: var(--tblr-border-radius, 4px) !important;
+    color: var(--tblr-body-color) !important;
+    box-shadow: none !important;
+    font-family: inherit !important;
+    font-size: var(--tblr-body-font-size, 0.875rem) !important;
+    line-height: var(--tblr-line-height, 1.4285714286) !important;
+    padding: 0.4375rem 0.75rem !important;
+    width: 100% !important;
+    max-width: none !important;
+    -webkit-appearance: none;
+    appearance: none;
+}
+
+/* Native date/time pickers need browser controls (calendar icon, popup). */
+body.mf-staffcore-admin #staffcore-app input.form-control[type="date"],
+body.mf-staffcore-admin #staffcore-app input.form-control[type="time"],
+body.mf-staffcore-admin #staffcore-app input.form-control[type="datetime-local"],
+body.mf-staffcore-admin #staffcore-app input.form-control[type="month"],
+body.mf-staffcore-admin #staffcore-app input.form-control[type="week"] {
+    -webkit-appearance: auto;
+    appearance: auto;
+    color-scheme: light dark;
+}
+
+/* Input groups: field + button on one row (WP width:100% reset breaks flex layout) */
+body.mf-staffcore-admin #staffcore-app .input-group {
+    flex-wrap: nowrap;
+    align-items: stretch;
+}
+
+body.mf-staffcore-admin #staffcore-app .input-group > .form-control,
+body.mf-staffcore-admin #staffcore-app .input-group > input.form-control {
+    width: 1% !important;
+    flex: 1 1 auto;
+    min-width: 0;
+}
+
+body.mf-staffcore-admin #staffcore-app .input-group > .btn {
+    flex-shrink: 0;
+}
+
+body.mf-staffcore-admin #staffcore-app .input-group > :not(:first-child):not(.dropdown-menu):not(.valid-tooltip):not(.invalid-tooltip) {
+    border-top-left-radius: 0 !important;
+    border-bottom-left-radius: 0 !important;
+}
+
+body.mf-staffcore-admin #staffcore-app .input-group > :not(:last-child):not(.dropdown-toggle):not(.dropdown-menu):not(.form-floating) {
+    border-top-right-radius: 0 !important;
+    border-bottom-right-radius: 0 !important;
+}
+
+/* Searchable selects (Tom Select) */
+body.mf-staffcore-admin #staffcore-app .ts-wrapper {
+    width: 100%;
+}
+
+body.mf-staffcore-admin #staffcore-app .ts-wrapper.single .ts-control {
+    background-color: var(--tblr-bg-forms, var(--tblr-bg-surface, #fff)) !important;
+    border: var(--tblr-border-width, 1px) solid var(--tblr-border-color) !important;
+    border-radius: var(--tblr-border-radius, 4px) !important;
+    color: var(--tblr-body-color) !important;
+    min-height: calc(1.4285714286em + 0.875rem + 2px) !important;
+    padding: 0.4375rem 2.25rem 0.4375rem 0.75rem !important;
+    box-shadow: none !important;
+}
+
+body.mf-staffcore-admin #staffcore-app .ts-wrapper.single .ts-control input {
+    color: var(--tblr-body-color) !important;
+}
+
+body.mf-staffcore-admin #staffcore-app .ts-dropdown {
+    z-index: 100010;
+    background-color: var(--tblr-bg-surface, #fff) !important;
+    border: var(--tblr-border-width, 1px) solid var(--tblr-border-color) !important;
+    border-radius: var(--tblr-border-radius, 4px) !important;
+    box-shadow: var(--tblr-box-shadow-dropdown, 0 0.5rem 1rem rgba(0, 0, 0, 0.1)) !important;
+    opacity: 1 !important;
+}
+
+body.mf-staffcore-admin #staffcore-app .ts-dropdown .option {
+    background-color: transparent;
+    color: var(--tblr-body-color);
+    padding: 0.45rem 0.75rem;
+}
+
+body.mf-staffcore-admin #staffcore-app .ts-dropdown .active {
+    background-color: rgba(var(--tblr-primary-rgb, 6, 111, 209), 0.1) !important;
+    color: var(--tblr-body-color) !important;
+}
+
+body.mf-staffcore-admin #staffcore-app .ts-wrapper.single.focus .ts-control {
+    border-color: var(--tblr-primary) !important;
+    box-shadow: 0 0 0 0.25rem rgba(var(--tblr-primary-rgb, 6, 111, 209), 0.25) !important;
+}
+
+#staffcore-app[data-bs-theme="dark"] .ts-wrapper.single .ts-control,
+#staffcore-app[data-bs-theme="dark"] .ts-dropdown {
+    background-color: var(--tblr-bg-forms, var(--tblr-gray-800, #1f2937)) !important;
+    border-color: var(--tblr-border-color, #374151) !important;
+    color: var(--tblr-body-color, #e5e7eb) !important;
+}
+
+/* WordPress admin caps select width (e.g. max-width: 25rem) */
+body.mf-staffcore-admin #staffcore-app select,
+body.mf-staffcore-admin #staffcore-app .form-select {
+    width: 100% !important;
+    max-width: none !important;
+}
+
+body.mf-staffcore-admin #staffcore-app .form-control:focus,
+body.mf-staffcore-admin #staffcore-app .form-select:focus,
+body.mf-staffcore-admin #staffcore-app textarea.form-control:focus,
+body.mf-staffcore-admin #staffcore-app input.form-control:focus {
+    background-color: var(--tblr-bg-forms, var(--tblr-bg-surface, #fff)) !important;
+    border-color: var(--tblr-primary) !important;
+    color: var(--tblr-body-color) !important;
+    box-shadow: 0 0 0 0.25rem rgba(var(--tblr-primary-rgb, 6, 111, 209), 0.25) !important;
+    outline: 0 !important;
+}
+
+body.mf-staffcore-admin #staffcore-app .form-control::placeholder,
+body.mf-staffcore-admin #staffcore-app textarea.form-control::placeholder {
+    color: var(--tblr-secondary-color, var(--tblr-gray-500, #6b7280)) !important;
+    opacity: 1;
+}
+
+#staffcore-app[data-bs-theme="dark"] .form-control,
+#staffcore-app[data-bs-theme="dark"] .form-select,
+#staffcore-app[data-bs-theme="dark"] textarea.form-control,
+#staffcore-app[data-bs-theme="dark"] input.form-control {
+    background-color: var(--tblr-bg-forms, var(--tblr-gray-800, #1f2937)) !important;
+    color: var(--tblr-body-color, #e5e7eb) !important;
+    border-color: var(--tblr-border-color, #374151) !important;
+}
+
+#staffcore-app[data-bs-theme="dark"] .form-control:focus,
+#staffcore-app[data-bs-theme="dark"] .form-select:focus,
+#staffcore-app[data-bs-theme="dark"] textarea.form-control:focus,
+#staffcore-app[data-bs-theme="dark"] input.form-control:focus {
+    background-color: var(--tblr-bg-forms, var(--tblr-gray-800, #1f2937)) !important;
+    color: var(--tblr-body-color, #e5e7eb) !important;
+}
+
+body.mf-staffcore-admin #staffcore-app .form-label {
+    color: var(--tblr-body-color) !important;
+    font-weight: 500;
+    margin-bottom: 0.25rem;
+}
+
+/* Dark theme: validation / error alerts (higher contrast on #111827 background) */
+#staffcore-app[data-bs-theme="dark"] .alert-danger {
+    --tblr-alert-color: #fecaca;
+    background-color: rgba(220, 53, 69, 0.18) !important;
+    border: 1px solid rgba(248, 113, 113, 0.55) !important;
+    color: #fecaca !important;
+}
+
+#staffcore-app[data-bs-theme="dark"] .alert-danger .alert-link {
+    color: #fca5a5 !important;
+}
+
+/* Client validation (Bootstrap 5 + Tabler) — invalid fields only, no green checkmarks */
+#staffcore-app .needs-validation .invalid-feedback {
+    display: none;
+}
+
+#staffcore-app .needs-validation .valid-feedback,
+#staffcore-app .needs-validation.was-validated .valid-feedback {
+    display: none !important;
+}
+
+#staffcore-app .needs-validation.was-validated .form-control:invalid ~ .invalid-feedback,
+#staffcore-app .needs-validation.was-validated .form-select:invalid ~ .invalid-feedback {
+    display: block;
+}
+
+/* Valid fields: keep normal appearance (no tick icon) */
+#staffcore-app .needs-validation.was-validated .form-control:valid,
+#staffcore-app .needs-validation.was-validated .form-select:valid,
+#staffcore-app .needs-validation.was-validated textarea.form-control:valid {
+    border-color: var(--tblr-border-color) !important;
+    background-image: none !important;
+    padding-right: 0.75rem !important;
+    box-shadow: none !important;
+}
+
+#staffcore-app .needs-validation.was-validated .form-control:valid:focus,
+#staffcore-app .needs-validation.was-validated .form-select:valid:focus,
+#staffcore-app .needs-validation.was-validated textarea.form-control:valid:focus {
+    border-color: var(--tblr-primary) !important;
+    box-shadow: 0 0 0 0.25rem rgba(var(--tblr-primary-rgb, 6, 111, 209), 0.25) !important;
+}
+
+/* Invalid fields: red border + compact error icon (~13px, Tabler default ~16px) */
+#staffcore-app .needs-validation.was-validated .form-control:invalid,
+#staffcore-app .needs-validation.was-validated .form-select:invalid,
+#staffcore-app .needs-validation.was-validated textarea.form-control:invalid {
+    border-color: var(--tblr-danger, #d63939) !important;
+    padding-right: calc(0.75rem + 1.25rem) !important;
+    background-repeat: no-repeat !important;
+    background-position: right 0.55rem center !important;
+    background-size: 0.8125rem 0.8125rem !important;
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12' fill='none'%3e%3ccircle cx='6' cy='6' r='4.5' stroke='%23d63939' stroke-width='1.25'/%3e%3cpath stroke='%23d63939' stroke-width='1.25' stroke-linecap='round' d='M4.25 4.25l3.5 3.5m0-3.5-3.5 3.5'/%3e%3c/svg%3e") !important;
+}
+
+#staffcore-app[data-bs-theme="dark"] .needs-validation.was-validated .form-control:valid,
+#staffcore-app[data-bs-theme="dark"] .needs-validation.was-validated .form-select:valid,
+#staffcore-app[data-bs-theme="dark"] .needs-validation.was-validated textarea.form-control:valid {
+    border-color: var(--tblr-border-color, #374151) !important;
+}
+
+#staffcore-app[data-bs-theme="dark"] .needs-validation.was-validated .form-control:invalid,
+#staffcore-app[data-bs-theme="dark"] .needs-validation.was-validated .form-select:invalid,
+#staffcore-app[data-bs-theme="dark"] .needs-validation.was-validated textarea.form-control:invalid {
+    border-color: rgba(248, 113, 113, 0.85) !important;
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12' fill='none'%3e%3ccircle cx='6' cy='6' r='4.5' stroke='%23f87171' stroke-width='1.25'/%3e%3cpath stroke='%23f87171' stroke-width='1.25' stroke-linecap='round' d='M4.25 4.25l3.5 3.5m0-3.5-3.5 3.5'/%3e%3c/svg%3e") !important;
+}
+
+#staffcore-app[data-bs-theme="dark"] .invalid-feedback {
+    color: #fca5a5 !important;
+}
+
+/* Buttons: outline-only inside StaffCore (Tabler convention) */
+body.mf-staffcore-admin #staffcore-app .btn:not(.staffcore-theme-switch):not(.btn-close) {
+    box-shadow: none !important;
+}
+
+/* Override WordPress admin :focus styles inside StaffCore UI */
+body.mf-staffcore-admin .staffcore-admin-wrap a:focus,
+body.mf-staffcore-admin .staffcore-admin-wrap a:focus .media-icon img,
+body.mf-staffcore-admin .staffcore-admin-wrap a:focus .plugin-icon,
+body.mf-staffcore-admin .staffcore-admin-wrap .nav-link:focus,
+body.mf-staffcore-admin .staffcore-admin-wrap .navbar-brand a:focus,
+body.mf-staffcore-admin .staffcore-admin-wrap .staffcore-page-tabs a:focus,
+body.mf-staffcore-admin .staffcore-admin-wrap .staffcore-back-wp:focus {
+    box-shadow: none !important;
+    outline: 0 !important;
+}
+
+/* Documents: preview / view modal */
+#staffcore-app .staffcore-documents .staffcore-doc-action {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 2rem;
+    height: 2rem;
+    padding: 0;
+    border-width: 1px;
+    border-style: solid;
+    border-radius: 0.375rem;
+    background: transparent;
+}
+
+#staffcore-app .staffcore-documents .staffcore-doc-action .ti {
+    font-size: 1rem;
+    line-height: 1;
+}
+
+#staffcore-app .staffcore-documents .staffcore-doc-action--view {
+    border-color: #0ea5e9;
+    color: #0ea5e9;
+}
+
+#staffcore-app .staffcore-documents .staffcore-doc-action--doc {
+    border-color: #06b6d4;
+    color: #06b6d4;
+}
+
+#staffcore-app .staffcore-documents .staffcore-doc-action--pdf {
+    border-color: #22c55e;
+    color: #22c55e;
+}
+
+#staffcore-app .staffcore-documents .staffcore-doc-action--edit {
+    border-color: #22c55e;
+    color: #22c55e;
+}
+
+#staffcore-app .staffcore-documents .staffcore-doc-action--issue {
+    border-color: #22c55e;
+    color: #22c55e;
+}
+
+#staffcore-app .staffcore-documents .staffcore-doc-action--delete {
+    border-color: #ef4444;
+    color: #ef4444;
+}
+
+#staffcore-app .staffcore-documents .staffcore-doc-action--revoke {
+    border-color: #f59e0b;
+    color: #f59e0b;
+}
+
+#staffcore-app .staffcore-documents .staffcore-doc-action:hover,
+#staffcore-app .staffcore-documents .staffcore-doc-action:focus,
+#staffcore-app .staffcore-documents .staffcore-doc-action:active {
+    background: transparent;
+    filter: brightness(1.1);
+}
+
+#staffcore-app .document-preview-shell {
+    max-height: min(70vh, 640px);
+    overflow-y: auto;
+}
+
+#staffcore-app .document-preview-header {
+    border-color: var(--tblr-border-color) !important;
+}
+
+#staffcore-app .document-preview-body {
+    white-space: pre-wrap;
+    line-height: 1.6;
+}
+
+/* Performance summary cards — Tabler "card with icon bg" (outline + clipped corner circle) */
+#staffcore-app .staffcore-performance-stats-wrap {
+    border-bottom: none;
+}
+
+#staffcore-app .staffcore-stat-cards.row-cards {
+    --tblr-gutter-x: 0.75rem;
+    --tblr-gutter-y: 0;
+    margin-bottom: 0;
+}
+
+#staffcore-app .staffcore-stat-cards.row-cards > [class*='col-'] {
+    margin-bottom: 0;
+}
+
+#staffcore-app .staffcore-stat-cards.row-cards .staffcore-stat-card {
+    margin-bottom: 0;
+}
+
+@media (max-width: 991.98px) {
+    /* Stat summary rows zero gutter-y on desktop; restore vertical gap when columns stack. */
+    #staffcore-app .staffcore-stat-cards.row-cards {
+        --tblr-gutter-y: 0.75rem;
+    }
+}
+
+#staffcore-app .staffcore-stat-card {
+    position: relative;
+    overflow: hidden;
+    background: transparent;
+    box-shadow: none;
+    border-width: 1px;
+    border-style: solid;
+}
+
+#staffcore-app .staffcore-stat-card .card-body {
+    position: relative;
+    padding-top: 1.15rem;
+    padding-bottom: 1.15rem;
+    padding-right: 4.75rem;
+    min-height: 6.5rem;
+}
+
+#staffcore-app .staffcore-stat-card__label {
+    font-size: 0.8125rem;
+    font-weight: 500;
+    line-height: 1.35;
+    margin-bottom: 0.35rem;
+}
+
+#staffcore-app .staffcore-stat-card__value {
+    font-size: 1.875rem;
+    font-weight: 700;
+    line-height: 1.15;
+}
+
+#staffcore-app .staffcore-stat-card__iconbg {
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 1;
+    width: 0;
+    height: 0;
+    margin: 0;
+    padding: 0;
+    pointer-events: none;
+}
+
+#staffcore-app .staffcore-stat-card__iconbg::before {
+    content: '';
+    position: absolute;
+    top: -3.5rem;
+    right: -3.5rem;
+    width: 8rem;
+    height: 8rem;
+    margin: 0;
+    border-radius: 50%;
+    background: var(--staffcore-stat-accent);
+    opacity: 0.18;
+}
+
+#staffcore-app .staffcore-stat-card__icon {
+    position: absolute;
+    top: 0.6rem;
+    right: 0.25rem;
+    display: block;
+    margin: 0;
+    padding: 0;
+    font-size: 2.3rem;
+    line-height: 1;
+    width: 2.75rem;
+    height: 2.75rem;
+    color: var(--staffcore-stat-accent);
+    opacity: 0.92;
+}
+
+#staffcore-app .staffcore-stat-card--primary {
+    --staffcore-stat-accent: var(--tblr-primary);
+    border-color: rgba(var(--tblr-primary-rgb, 6, 111, 209), 0.4);
+}
+
+#staffcore-app .staffcore-stat-card--primary .staffcore-stat-card__value {
+    color: var(--tblr-primary);
+}
+
+#staffcore-app .staffcore-stat-card--azure {
+    --staffcore-stat-accent: var(--tblr-azure, #4299e1);
+    border-color: rgba(var(--tblr-azure-rgb, 66, 153, 225), 0.4);
+}
+
+#staffcore-app .staffcore-stat-card--azure .staffcore-stat-card__value {
+    color: var(--tblr-azure, #4299e1);
+}
+
+#staffcore-app .staffcore-stat-card--success {
+    --staffcore-stat-accent: var(--tblr-success);
+    border-color: rgba(var(--tblr-success-rgb, 47, 179, 68), 0.4);
+}
+
+#staffcore-app .staffcore-stat-card--success .staffcore-stat-card__value {
+    color: var(--tblr-success);
+}
+
+#staffcore-app .staffcore-stat-card--warning {
+    --staffcore-stat-accent: var(--tblr-warning);
+    border-color: rgba(var(--tblr-warning-rgb, 247, 103, 7), 0.4);
+}
+
+#staffcore-app .staffcore-stat-card--warning .staffcore-stat-card__value {
+    color: var(--tblr-warning);
+}
+
+#staffcore-app .staffcore-stat-card--cyan {
+    --staffcore-stat-accent: var(--tblr-cyan, #17a2b8);
+    border-color: rgba(var(--tblr-cyan-rgb, 23, 162, 184), 0.4);
+}
+
+#staffcore-app .staffcore-stat-card--cyan .staffcore-stat-card__value {
+    color: var(--tblr-cyan, #17a2b8);
+}
+
+#staffcore-app[data-bs-theme='dark'] .staffcore-stat-card__iconbg::before {
+    opacity: 0.28;
+}
+
+#staffcore-app[data-bs-theme='dark'] .staffcore-stat-card__icon {
+    opacity: 1;
+}
+
+#staffcore-app .staffcore-stat-card__hint {
+    font-weight: 500;
+}
+
+#staffcore-app .staffcore-stat-card-link:focus-visible {
+    outline: 2px solid var(--tblr-primary);
+    outline-offset: 2px;
+    border-radius: var(--tblr-border-radius);
+}
+
+#staffcore-app .staffcore-stat-card--interactive {
+    transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+#staffcore-app .staffcore-stat-card-link:hover .staffcore-stat-card--interactive,
+#staffcore-app .staffcore-stat-card-link:focus-visible .staffcore-stat-card--interactive {
+    border-color: var(--tblr-primary);
+    box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+}
+
+#staffcore-app .staffcore-dashboard:not(.staffcore-dashboard--employee) .staffcore-dashboard-quick-actions {
+    /* Admin dashboard only — explicit spacing (no Bootstrap mt/mb utilities; those use !important). */
+    margin-top: calc(1.5rem + 10px); /* mt-4 baseline + 10px */
+    margin-bottom: calc(0.5rem - 10px); /* mb-2 baseline − 10px */
+}
+
+#staffcore-app .staffcore-dashboard:not(.staffcore-dashboard--employee) .staffcore-dashboard-quick-actions .card-body {
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+}
+
+#staffcore-app .staffcore-dashboard:not(.staffcore-dashboard--employee) .staffcore-dashboard-quick-actions__buttons {
+    flex-direction: column;
+}
+
+#staffcore-app .staffcore-dashboard:not(.staffcore-dashboard--employee) .staffcore-dashboard-quick-actions__buttons .btn {
+    width: 100%;
+}
+
+@media (min-width: 576px) {
+    #staffcore-app .staffcore-dashboard:not(.staffcore-dashboard--employee) .staffcore-dashboard-quick-actions__buttons {
+        flex-direction: row;
+        flex-wrap: nowrap;
+        align-items: stretch;
+    }
+
+    #staffcore-app .staffcore-dashboard:not(.staffcore-dashboard--employee) .staffcore-dashboard-quick-actions__buttons .btn {
+        flex: 1 1 0;
+        width: auto;
+        min-width: 0;
+    }
+}
+
+#staffcore-app .staffcore-dashboard--employee .staffcore-dashboard-quick-actions .card-body {
+    padding-top: 0.75rem;
+    padding-bottom: 0.75rem;
+}
+
+#staffcore-app .staffcore-department-card {
+    border: 1px solid var(--tblr-border-color);
+}
+
+#staffcore-app .staffcore-department-grid {
+    --staffcore-dept-columns-max: 1;
+    --staffcore-dept-gap: 1rem;
+    --staffcore-dept-min-width: max(
+        10rem,
+        calc(
+            (100% - (var(--staffcore-dept-columns-max) - 1) * var(--staffcore-dept-gap))
+            / var(--staffcore-dept-columns-max)
+        )
+    );
+    display: grid;
+    gap: var(--staffcore-dept-gap);
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, var(--staffcore-dept-min-width)), 1fr));
+}
+
+@media (min-width: 576px) {
+    #staffcore-app .staffcore-department-grid {
+        --staffcore-dept-columns-max: 2;
+    }
+}
+
+@media (min-width: 992px) {
+    #staffcore-app .staffcore-department-grid {
+        --staffcore-dept-columns-max: 4;
+    }
+}
+
+#staffcore-app .staffcore-department-grid__item {
+    min-width: 0;
+}
+
+#staffcore-app .staffcore-department-card .h3 {
+    font-size: clamp(0.95rem, 1.1vw, 1.25rem);
+    line-height: 1.3;
+    overflow-wrap: anywhere;
+    word-break: break-word;
+}
+
+#staffcore-app .staffcore-department-card .staffcore-department-card__meta {
+    font-size: 0.8125rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+#staffcore-app .staffcore-dashboard-leave-list .list-group-item {
+    border-left: 0;
+    border-right: 0;
+}
+
+#staffcore-app .staffcore-dashboard-leave-list__row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.75rem;
+}
+
+#staffcore-app .staffcore-dashboard-leave-list__main {
+    flex: 1 1 auto;
+    min-width: 0;
+}
+
+#staffcore-app .staffcore-dashboard-leave-list__date {
+    flex: 0 0 auto;
+    text-align: right;
+    white-space: nowrap;
+}
+
+@media (max-width: 575.98px) {
+    #staffcore-app .staffcore-dashboard-leave-list__row {
+        flex-wrap: wrap;
+    }
+
+    #staffcore-app .staffcore-dashboard-leave-list__date {
+        width: 100%;
+        padding-left: calc(2rem + 0.5rem);
+        white-space: normal;
+    }
+}
+
+/* Employees: stable Department badge colors across themes */
+#staffcore-app .staffcore-department-badge {
+    background-color: rgba(var(--tblr-primary-rgb, 6, 111, 209), 0.12) !important;
+    color: var(--tblr-primary, #066fd1) !important;
+}
+
+#staffcore-app[data-bs-theme='dark'] .staffcore-department-badge {
+    background-color: rgba(var(--tblr-primary-rgb, 6, 111, 209), 0.24) !important;
+    color: #93c5fd !important;
+}
+
+/* Settings → Permissions matrix */
+#staffcore-app .staffcore-permissions-table__permission {
+    min-width: 12rem;
+}
+
+#staffcore-app .staffcore-permissions-table__role {
+    min-width: 6.5rem;
+    white-space: nowrap;
+}
+
+#staffcore-app .staffcore-permissions-module__title .icon {
+    vertical-align: -0.15em;
+}
+
+#staffcore-app .staffcore-permissions-module__actions .form-check-label {
+    min-width: 3.5rem;
+}
+
+#staffcore-app .staffcore-permissions-modules .list-group-item {
+    border-inline: 0;
+    padding-top: 0.75rem;
+    padding-bottom: 0.75rem;
+}
+
+/* Users → link existing WordPress account */
+#staffcore-app .staffcore-link-user-results {
+    max-height: 14rem;
+    overflow-y: auto;
+    border: 1px solid var(--tblr-border-color);
+    border-radius: var(--tblr-border-radius);
+}
+
+#staffcore-app .staffcore-link-user-results .list-group-item {
+    text-align: left;
+    border-inline: 0;
+}
+
+#staffcore-app .staffcore-link-user-results .list-group-item:first-child {
+    border-top: 0;
+}
+
+#staffcore-app .staffcore-link-user-results .list-group-item:last-child {
+    border-bottom: 0;
+}
+
+/* Notifications: shell bell + dropdown + inbox */
+#staffcore-app .staffcore-notifications-nav .btn.btn-icon {
+    width: 2.25rem;
+    height: 2.25rem;
+}
+
+#staffcore-app .staffcore-notifications-nav .badge-notification {
+    position: absolute;
+    top: -0.3rem;
+    right: -0.4rem;
+    min-width: 1.2rem;
+    height: 1.2rem;
+    line-height: 1.2rem;
+    padding: 0 0.25rem;
+    font-size: 0.65rem;
+}
+
+#staffcore-app .staffcore-notifications-dropdown {
+    min-width: 24rem;
+    max-width: min(92vw, 28rem);
+}
+
+#staffcore-app .staffcore-notifications-dropdown .list-group {
+    max-height: 21rem;
+    overflow-y: auto;
+}
+
+#staffcore-app .staffcore-notification-unread td {
+    background: rgba(var(--tblr-primary-rgb, 6, 111, 209), 0.04);
+}
+
+#staffcore-app .staffcore-notification-dot {
+    width: 0.55rem;
+    height: 0.55rem;
+    border-radius: 50%;
+    padding: 0;
+}
+
+/* Bulk delete toolbar button: keep readable in light/dark and disabled state */
+#staffcore-app [data-role='bulk-delete-btn'].btn.btn-outline.btn-danger {
+    color: var(--tblr-danger, #d63939);
+    border-color: rgba(var(--tblr-danger-rgb, 214, 57, 57), 0.45);
+    background-color: transparent;
+}
+
+#staffcore-app [data-role='bulk-delete-btn'].btn.btn-outline.btn-danger:disabled {
+    color: var(--tblr-danger, #d63939);
+    border-color: rgba(var(--tblr-danger-rgb, 214, 57, 57), 0.3);
+    background-color: rgba(var(--tblr-danger-rgb, 214, 57, 57), 0.12);
+    opacity: 1;
+}
+
+#staffcore-app [data-role='bulk-delete-btn'].btn.btn-outline.btn-danger:hover,
+#staffcore-app [data-role='bulk-delete-btn'].btn.btn-outline.btn-danger:focus,
+#staffcore-app [data-role='bulk-delete-btn'].btn.btn-outline.btn-danger:active {
+    color: #fff;
+}
+
+/* My Profile — employee self-service */
+#staffcore-app .staffcore-my-profile-summary .staffcore-my-profile-photo {
+    display: flex;
+    justify-content: center;
+}
+
+#staffcore-app .staffcore-profile-photo-trigger {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: none;
+    border: 0;
+    padding: 0;
+    cursor: pointer;
+    border-radius: 50%;
+    line-height: 0;
+    vertical-align: middle;
+}
+
+#staffcore-app .staffcore-profile-photo-trigger:focus-visible {
+    outline: 2px solid var(--tblr-primary, #206bc4);
+    outline-offset: 4px;
+}
+
+#staffcore-app .staffcore-profile-photo-frame {
+    --staffcore-profile-photo-size: 7.5rem;
+    --staffcore-profile-photo-font-size: 3rem;
+    position: relative;
+    display: block;
+    width: var(--staffcore-profile-photo-size);
+    height: var(--staffcore-profile-photo-size);
+    flex-shrink: 0;
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+#staffcore-app .staffcore-profile-photo-frame .avatar {
+    display: block;
+    width: 100%;
+    height: 100%;
+    font-size: var(--staffcore-profile-photo-font-size);
+    border-radius: 50%;
+    background-size: cover;
+    background-position: center;
+    transition: transform 0.2s ease, filter 0.2s ease;
+}
+
+#staffcore-app .staffcore-profile-photo-overlay {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.2rem;
+    padding: 0.35rem;
+    border-radius: 50%;
+    background: rgba(15, 23, 42, 0.62);
+    color: #fff;
+    opacity: 0;
+    transition: opacity 0.2s ease;
+    text-align: center;
+    pointer-events: none;
+}
+
+#staffcore-app .staffcore-profile-photo-trigger:hover .staffcore-profile-photo-overlay,
+#staffcore-app .staffcore-profile-photo-trigger:focus-visible .staffcore-profile-photo-overlay,
+#staffcore-app .staffcore-profile-photo-trigger:active .staffcore-profile-photo-overlay {
+    opacity: 1;
+}
+
+#staffcore-app .staffcore-profile-photo-trigger:hover .staffcore-profile-photo-frame .avatar,
+#staffcore-app .staffcore-profile-photo-trigger:focus-visible .staffcore-profile-photo-frame .avatar,
+#staffcore-app .staffcore-profile-photo-trigger:active .staffcore-profile-photo-frame .avatar {
+    transform: scale(1.04);
+    filter: brightness(0.88);
+}
+
+#staffcore-app .staffcore-profile-photo-overlay-icon {
+    font-size: 2rem;
+    line-height: 1;
+}
+
+#staffcore-app .staffcore-profile-photo-overlay-text {
+    font-size: 0.8125rem;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    line-height: 1.2;
+    max-width: 100%;
+}
+
+@media (max-width: 575.98px) {
+    #staffcore-app .staffcore-profile-photo-frame {
+        --staffcore-profile-photo-size: 6.5rem;
+        --staffcore-profile-photo-font-size: 2.6rem;
+    }
+
+    #staffcore-app .staffcore-profile-photo-overlay-icon {
+        font-size: 1.75rem;
+    }
+
+    #staffcore-app .staffcore-profile-photo-overlay-text {
+        font-size: 0.75rem;
+    }
+}
+
+@media (hover: none) and (pointer: coarse) {
+    #staffcore-app .staffcore-profile-photo-overlay {
+        opacity: 0;
+    }
+
+    #staffcore-app .staffcore-profile-photo-trigger:active .staffcore-profile-photo-overlay {
+        opacity: 1;
+    }
+}
+
+/* My Profile — photo crop modal (viewport-safe) */
+#staffcore-app .staffcore-photo-crop-modal .staffcore-photo-crop-modal-dialog {
+    max-height: calc(100vh - 2rem);
+    margin: 1rem auto;
+}
+
+body.mf-staffcore-admin.admin-bar #staffcore-app .staffcore-photo-crop-modal .staffcore-photo-crop-modal-dialog {
+    max-height: calc(100vh - 32px - 2rem);
+}
+
+@media screen and (max-width: 782px) {
+    body.mf-staffcore-admin.admin-bar #staffcore-app .staffcore-photo-crop-modal .staffcore-photo-crop-modal-dialog {
+        max-height: calc(100vh - 46px - 1rem);
+    }
+}
+
+#staffcore-app .staffcore-photo-crop-modal .modal-content {
+    max-height: inherit;
+}
+
+#staffcore-app .staffcore-photo-crop-modal .modal-body {
+    overflow-y: auto;
+}
+
+#staffcore-app .staffcore-photo-crop-wrap {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: min(50vh, 360px);
+    max-height: min(50vh, 360px);
+    background: var(--tblr-bg-surface-secondary, #f8fafc);
+    border-radius: var(--tblr-border-radius, 0.375rem);
+    overflow: hidden;
+}
+
+#staffcore-app[data-bs-theme="dark"] .staffcore-photo-crop-wrap {
+    background: var(--tblr-bg-surface-secondary, #1f2937);
+}
+
+#staffcore-app .staffcore-photo-crop-wrap::after {
+    content: '';
+    position: absolute;
+    inset: 50%;
+    width: min(90%, 100%);
+    height: 0;
+    padding-bottom: min(90%, 100%);
+    transform: translate(-50%, -50%);
+    border: 2px solid rgba(51, 153, 255, 0.85);
+    border-radius: var(--tblr-border-radius, 0.375rem);
+    box-shadow: 0 0 0 9999px rgba(0, 0, 0, 0.35);
+    pointer-events: none;
+    z-index: 2;
+}
+
+#staffcore-app .staffcore-photo-crop-image {
+    display: block;
+    position: relative;
+    z-index: 1;
+    max-width: none;
+    will-change: transform;
+}
+
+#staffcore-app .staffcore-photo-crop-toolbar .btn {
+    min-width: 0;
+}
+
+@media (max-width: 575.98px) {
+    #staffcore-app .staffcore-photo-crop-modal .staffcore-photo-crop-modal-dialog {
+        margin: 0.5rem auto;
+        max-width: calc(100% - 1rem);
+    }
+
+    #staffcore-app .staffcore-photo-crop-wrap {
+        height: min(40vh, 280px);
+        max-height: min(40vh, 280px);
+    }
+
+    #staffcore-app .staffcore-photo-crop-toolbar .btn {
+        padding-left: 0.5rem;
+        padding-right: 0.5rem;
+    }
+}
+
+#staffcore-app .staffcore-my-profile-password-form .form-label.required::after {
+    content: ' *';
+    color: var(--tblr-danger, #d63939);
+}
+
+/* Employee self-service — inline card-header filters (My Attendance, My Payslips) */
+#staffcore-app .staffcore-card-header-with-filters {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.75rem;
+}
+
+body.mf-staffcore-admin #staffcore-app .staffcore-card-header-with-filters .card-actions {
+    margin: 0 !important;
+    width: auto !important;
+    flex: 0 0 auto;
+}
+
+body.mf-staffcore-admin #staffcore-app .staffcore-inline-filter-form .form-select,
+body.mf-staffcore-admin #staffcore-app .staffcore-inline-filter-form select,
+#staffcore-app .staffcore-inline-filter-form .form-select,
+#staffcore-app .staffcore-inline-filter-form select {
+    width: auto !important;
+    min-width: 9.5rem;
+    max-width: 12rem !important;
+    flex: 0 0 auto;
+    display: inline-block;
+}
+
+body.mf-staffcore-admin #staffcore-app .staffcore-inline-filter-form,
+#staffcore-app .staffcore-inline-filter-form {
+    display: inline-flex !important;
+    flex-flow: row nowrap !important;
+    align-items: center;
+    gap: 0.5rem;
+    margin: 0;
+    width: auto !important;
+    max-width: none !important;
+}
+
+#staffcore-app .staffcore-inline-filter-form .staffcore-list-filter-reset,
+#staffcore-app .staffcore-inline-filter-form .btn.btn-icon {
+    flex: 0 0 auto;
+    flex-shrink: 0;
+}
+
+/* My Payslips — 3 stat cards fill full row */
+#staffcore-app .staffcore-my-payslips .staffcore-stat-cards--three {
+    margin-bottom: 0;
+}
+
+#staffcore-app .staffcore-my-payslips .staffcore-stat-cards--three > [class*='col-'] {
+    flex: 0 0 100%;
+    max-width: 100%;
+}
+
+@media (min-width: 768px) {
+    #staffcore-app .staffcore-my-payslips .staffcore-stat-cards--three > [class*='col-'] {
+        flex: 0 0 33.333333%;
+        max-width: 33.333333%;
+    }
+}
+
+#staffcore-app .staffcore-my-payslips .staffcore-stat-cards--three .staffcore-stat-card .card-body {
+    min-height: 7.5rem;
+    padding-top: 1.35rem;
+    padding-bottom: 1.35rem;
+    padding-left: 1.5rem;
+    padding-right: 4.75rem;
+}
+
+#staffcore-app .staffcore-my-payslips .staffcore-stat-cards--three .staffcore-stat-card__value {
+    font-size: clamp(1.75rem, 2.5vw, 2.25rem);
+}
+
+/* My KPIs — review period select (longer labels e.g. "No periods available") */
+body.mf-staffcore-admin #staffcore-app .staffcore-inline-filter-form.staffcore-kpi-period-filter-form .form-select,
+body.mf-staffcore-admin #staffcore-app .staffcore-inline-filter-form.staffcore-kpi-period-filter-form select,
+#staffcore-app .staffcore-inline-filter-form.staffcore-kpi-period-filter-form .form-select,
+#staffcore-app .staffcore-inline-filter-form.staffcore-kpi-period-filter-form select {
+    width: auto !important;
+    min-width: 18rem;
+    max-width: none !important;
+    flex: 0 0 auto;
+    flex-shrink: 0;
+}
+
+body.mf-staffcore-admin #staffcore-app .staffcore-inline-filter-form.staffcore-kpi-period-filter-form .ts-wrapper,
+#staffcore-app .staffcore-inline-filter-form.staffcore-kpi-period-filter-form .ts-wrapper {
+    width: auto !important;
+    min-width: 18rem;
+    max-width: none !important;
+    flex: 0 0 auto;
+    flex-shrink: 0;
+}
+
+#staffcore-app .staffcore-kpi-employees--employee .staffcore-employee-review-card {
+    overflow: hidden;
+}
+
+#staffcore-app .staffcore-kpi-employees--employee .staffcore-employee-review-card__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    background: var(--tblr-primary);
+    color: #fff;
+    border-bottom: 0;
+}
+
+#staffcore-app .staffcore-kpi-employees--employee .staffcore-employee-review-card__title {
+    font-weight: 600;
+}
+
+#staffcore-app .staffcore-kpi-employees--employee .staffcore-employee-review-card__section-title {
+    font-weight: 600;
+    font-size: 0.9375rem;
+}
+
+#staffcore-app .staffcore-kpi-employees--employee .staffcore-employee-review-card__footer {
+    border-top: 1px solid var(--tblr-border-color);
+    background: transparent;
+}
+

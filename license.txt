@@ -1,0 +1,83 @@
+MF StaffCore - License Information
+==================================
+
+Copyright (c) Mehdi Falahi. All rights reserved.
+
+MF StaffCore Pro is sold by the author and authorized sellers (USD 39 one-time).
+MF StaffCore Lite is distributed free on WordPress.org.
+
+Purchase terms (number of sites, updates, support) are defined on the product
+page where you bought Pro. Keep your order receipt or purchase confirmation.
+
+Product page: https://mehdifalahi.dev/product/mf-staffcore-wp
+
+-------------------------------------------------------------------------------
+
+1. PHP code and integrated HTML - GNU GPL v2 or later
+-----------------------------------------------------
+
+All PHP source files and HTML output integrated in those PHP files are licensed
+under the GNU General Public License version 2 or later.
+
+License text: https://www.gnu.org/licenses/gpl-2.0.html
+Full GPL text is included in: licensing/GPL-2.0.txt
+
+This includes (non-exhaustive):
+
+  - mf-staffcore.php
+  - bootstrap/
+  - core/
+  - modules/
+  - platforms/
+  - ui/**/*.php
+  - database/
+  - languages/ (translation templates and locale files)
+
+Under the GPL you may use, study, modify, and redistribute the PHP code,
+provided that derivative works are also licensed under the GPL.
+
+-------------------------------------------------------------------------------
+
+2. Other assets - commercial license (Pro buyers)
+---------------------------------------------------
+
+CSS, JavaScript, images, icons, design, and buyer documentation that are not
+PHP or integrated HTML are part of the commercial product. Use is limited to
+the scope of your purchase (typically one or more WordPress installations as
+stated on the product page).
+
+You may not redistribute, resell, or sublicense the Pro ZIP or its non-GPL
+assets without written permission from the author.
+
+-------------------------------------------------------------------------------
+
+3. Third-party components
+-------------------------
+
+Bundled libraries retain their original licenses. Summary:
+
+  licensing/third-party-licenses.md
+
+Notable client-side dependencies:
+
+  - Tabler UI ...................... MIT
+  - Tabler Icons ................... MIT
+  - Tom Select ..................... Apache-2.0
+  - printThis ...................... MIT
+
+PHP dependencies in vendor/ each include their own LICENSE file.
+
+When redistributing GPL-covered PHP, retain all bundled copyright and license notices.
+
+-------------------------------------------------------------------------------
+
+4. No license key inside WordPress
+------------------------------------
+
+MF StaffCore does not require entering a license key in the WordPress admin.
+Your purchase is validated by the seller where you paid.
+
+-------------------------------------------------------------------------------
+
+For licensing questions, contact the author through the support channel
+provided at your place of purchase.

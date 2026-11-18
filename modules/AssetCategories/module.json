@@ -1,0 +1,12 @@
+{
+    "id": "asset-categories",
+    "name": "Asset Categories",
+    "description": "Classify company assets into categories.",
+    "version": "1.0.0",
+    "namespace": "MF\\StaffCore\\Modules\\AssetCategories",
+    "enabled": true,
+    "permissions": [
+        "asset_categories.view"
+    ],
+    "dependencies": []
+}

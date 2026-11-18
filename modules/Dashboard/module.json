@@ -1,0 +1,12 @@
+{
+    "id": "dashboard",
+    "name": "Dashboard",
+    "description": "Admin overview with key HR metrics, shortcuts, and recent activity.",
+    "version": "1.0.0",
+    "namespace": "MF\\StaffCore\\Modules\\Dashboard",
+    "enabled": true,
+    "permissions": [
+        "dashboard.view"
+    ],
+    "dependencies": []
+}

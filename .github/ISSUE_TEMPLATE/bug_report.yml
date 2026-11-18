@@ -1,0 +1,56 @@
+name: Bug report
+description: MF StaffCore Lite does not behave as expected
+title: "[Bug]: "
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for the report. Remove real employee, payroll, and attendance data before you submit.
+  - type: input
+    id: wp-version
+    attributes:
+      label: WordPress version
+      placeholder: "6.8"
+    validations:
+      required: true
+  - type: input
+    id: php-version
+    attributes:
+      label: PHP version
+      placeholder: "8.2"
+    validations:
+      required: true
+  - type: input
+    id: plugin-version
+    attributes:
+      label: Plugin version
+      placeholder: "0.1.13"
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+      description: What you clicked, and which screen you were on.
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected
+    validations:
+      required: true
+  - type: textarea
+    id: actual
+    attributes:
+      label: What happened
+    validations:
+      required: true
+  - type: checkboxes
+    id: privacy
+    attributes:
+      label: Privacy
+      options:
+        - label: I removed personal HR data from this report
+          required: true

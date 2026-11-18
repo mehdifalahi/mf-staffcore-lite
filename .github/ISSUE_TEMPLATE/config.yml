@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: WordPress.org support
+    url: https://wordpress.org/support/plugin/mf-staffcore-lite/
+    about: Questions about installing and using the free plugin.
+  - name: MF StaffCore Pro
+    url: https://mehdifalahi.dev/product/mf-staffcore-wp
+    about: Pro modules and the paid edition.

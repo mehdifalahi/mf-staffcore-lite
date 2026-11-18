@@ -1,0 +1,12 @@
+{
+    "id": "suppliers",
+    "name": "Suppliers",
+    "description": "Manage asset suppliers and vendors.",
+    "version": "1.0.0",
+    "namespace": "MF\\StaffCore\\Modules\\Suppliers",
+    "enabled": true,
+    "permissions": [
+        "suppliers.view"
+    ],
+    "dependencies": []
+}

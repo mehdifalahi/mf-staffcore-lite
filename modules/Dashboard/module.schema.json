@@ -1,0 +1,43 @@
+{
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "title": "MF StaffCore Module Manifest",
+    "type": "object",
+    "required": ["id", "name", "description", "version", "namespace"],
+    "properties": {
+        "id": {
+            "type": "string",
+            "description": "Unique module slug (lowercase, kebab-case)"
+        },
+        "name": {
+            "type": "string",
+            "description": "Human-readable module name"
+        },
+        "description": {
+            "type": "string",
+            "description": "Short summary of what the module does"
+        },
+        "version": {
+            "type": "string",
+            "pattern": "^\\d+\\.\\d+\\.\\d+$"
+        },
+        "namespace": {
+            "type": "string",
+            "description": "PSR-4 namespace root for module PHP classes"
+        },
+        "enabled": {
+            "type": "boolean",
+            "default": true
+        },
+        "permissions": {
+            "type": "array",
+            "items": { "type": "string" },
+            "description": "Permission keys required by this module"
+        },
+        "dependencies": {
+            "type": "array",
+            "items": { "type": "string" },
+            "description": "Other module IDs this module depends on"
+        }
+    },
+    "additionalProperties": false
+}

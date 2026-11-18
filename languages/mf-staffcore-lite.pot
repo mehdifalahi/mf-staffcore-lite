@@ -1,0 +1,402 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: MF StaffCore Lite
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-06-04 00:00+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Domain: mf-staffcore-lite\n"
+
+#: modules/Biometric/Views/settings-panel.php
+msgid "ADMS Connection"
+msgstr ""
+
+#: modules/Biometric/Views/settings-panel.php
+msgid "Biometric Devices"
+msgstr ""
+
+#: modules/Biometric/Views/settings-panel.php
+msgid "Punch Log"
+msgstr ""
+
+#: modules/Biometric/Views/settings-panel.php
+msgid "Send test punch"
+msgstr ""
+
+#: modules/Biometric/Views/settings-panel.php
+msgid "Punch datetime"
+msgstr ""
+
+#: modules/Biometric/Views/settings-panel.php
+msgid "Punch datetime is required."
+msgstr ""
+
+#: modules/Biometric/Views/settings-panel.php
+msgid "Retry"
+msgstr ""
+
+#: modules/Biometric/Views/settings-panel.php
+msgid "Employee mapping"
+msgstr ""
+
+#: modules/Employees/Views/page.php
+msgid "Biometric User ID"
+msgstr ""
+
+#: platforms/wordpress/Ajax/BiometricDeviceAjaxHandler.php
+msgid "Punch sync retried successfully."
+msgstr ""
+
+#: modules/Biometric/Services/BiometricSyncService.php
+msgid "Biometric punch not mapped"
+msgstr ""
+
+#: modules/Users/Views/page.php
+msgid "Data access scope"
+msgstr ""
+
+#: core/Authorization/ManagerScopeModeRegistry.php
+msgid "Automatic (inactive)"
+msgstr ""
+
+#: core/Authorization/ManagerScopeModeRegistry.php
+msgid "Uses department manager link: team scope when they manage a department, otherwise company-wide."
+msgstr ""
+
+#: core/Authorization/ManagerScopeModeRegistry.php
+msgid "Team only"
+msgstr ""
+
+#: core/Authorization/ManagerScopeModeRegistry.php
+msgid "Always limit operational lists to their managed team; lists stay empty until a department manager link exists."
+msgstr ""
+
+#: core/Authorization/ManagerScopeModeRegistry.php
+msgid "Company-wide"
+msgstr ""
+
+#: core/Authorization/ManagerScopeModeRegistry.php
+msgid "Full company HR data like central HR staff; My Team roster still follows department assignments only."
+msgstr ""
+
+#: platforms/wordpress/Admin/Presenters/UsersPresenter.php
+msgid "Controls whether this Manager sees company-wide HR data or only their team's records. Organizational department assignments and My Team roster are unchanged."
+msgstr ""
+
+#: core/Authorization/ManagerTeamScopeResolver.php
+msgid "You have team-only data access but no department manager assignment. Assign this manager to a department or change the data access scope on Settings → Users."
+msgstr ""
+
+#: modules/Dashboard/EmployeeDashboardStatCards.php
+#: modules/Dashboard/Views/employee-index.php
+msgid "Leave Balance"
+msgstr ""
+
+#: modules/Dashboard/EmployeeDashboardStatCards.php
+#: modules/Dashboard/Views/employee-index.php
+msgid "Days Remaining"
+msgstr ""
+
+#: modules/Dashboard/EmployeeDashboardStatCards.php
+#: modules/Dashboard/Views/employee-index.php
+msgid "Pending Requests"
+msgstr ""
+
+#: modules/Dashboard/EmployeeDashboardStatCards.php
+#: modules/Dashboard/Views/employee-index.php
+msgid "Awaiting Approval"
+msgstr ""
+
+#: modules/Dashboard/EmployeeDashboardStatCards.php
+#: modules/Dashboard/Views/employee-index.php
+msgid "Attendance"
+msgstr ""
+
+#: modules/Dashboard/EmployeeDashboardStatCards.php
+#: modules/Dashboard/Views/employee-index.php
+msgid "Days This Month"
+msgstr ""
+
+#: modules/Dashboard/EmployeeDashboardStatCards.php
+#: modules/Dashboard/Views/employee-index.php
+msgid "My Documents"
+msgstr ""
+
+#: modules/Dashboard/EmployeeDashboardStatCards.php
+#: modules/Dashboard/Views/employee-index.php
+msgid "Available"
+msgstr ""
+
+#: modules/Dashboard/Views/employee-index.php
+msgid "Dashboard"
+msgstr ""
+
+#: modules/Dashboard/Views/employee-index.php
+msgid "Apply for Leave"
+msgstr ""
+
+#: modules/Dashboard/Views/employee-index.php
+msgid "View Payslips"
+msgstr ""
+
+#: modules/Dashboard/Views/employee-index.php
+msgid "My KPI Report"
+msgstr ""
+
+#: modules/Dashboard/Views/employee-index.php
+msgid "Edit Profile"
+msgstr ""
+
+#: modules/Dashboard/Views/employee-index.php
+msgid "Recent Payslips"
+msgstr ""
+
+#: modules/Dashboard/Views/employee-index.php
+msgid "Net Salary"
+msgstr ""
+
+#: modules/Dashboard/Views/employee-index.php
+msgid "Download"
+msgstr ""
+
+#: modules/Dashboard/Views/employee-index.php
+msgid "No payslips available yet."
+msgstr ""
+
+#: modules/Dashboard/Views/employee-index.php
+msgid "Download payslip"
+msgstr ""
+
+#: modules/Dashboard/Views/employee-index.php
+msgid "Upcoming Leaves"
+msgstr ""
+
+#: modules/Dashboard/Views/employee-index.php
+msgid "No upcoming leaves"
+msgstr ""
+
+#: modules/Dashboard/Views/employee-index.php
+msgid "Latest Review"
+msgstr ""
+
+#: modules/Dashboard/Views/employee-index.php
+msgid "No performance reviews yet."
+msgstr ""
+
+#: modules/Dashboard/Views/employee-index.php
+msgid "Overall Score"
+msgstr ""
+
+#: modules/Dashboard/Views/employee-index.php
+msgid "Reviewed by"
+msgstr ""
+
+#: modules/Dashboard/Views/employee-index.php
+#, php-format
+msgid "© BIOSTAFF, %s"
+msgstr ""
+
+#: modules/Dashboard/Views/employee-index.php
+#, php-format
+msgid "%d day"
+msgid_plural "%d days"
+msgstr[0] ""
+msgstr[1] ""
+
+#: ui/components/frontend-panel-url-card.php
+msgid "Frontend panel link"
+msgstr ""
+
+#: ui/components/frontend-panel-url-card.php
+msgid "Share this URL with StaffCore users so they can open the HR panel on the public site (without wp-admin). Logged-in users with an active StaffCore account can access the same menus and permissions as in admin."
+msgstr ""
+
+#: ui/components/frontend-panel-url-card.php
+msgid "Panel URL"
+msgstr ""
+
+#: ui/components/frontend-panel-url-card.php
+msgid "Copy URL"
+msgstr ""
+
+#: ui/components/frontend-panel-url-card.php
+msgid "In WordPress go to Appearance → Menus, add a Custom Link with the panel URL and a label of your choice, then assign the menu to your site header."
+msgstr ""
+
+#: modules/MyProfile/Views/page.php
+msgid "Change profile photo"
+msgstr ""
+
+#: modules/MyProfile/Views/page.php
+msgid "Change photo"
+msgstr ""
+
+#: modules/MyProfile/Views/page.php
+msgid "Profile Photo"
+msgstr ""
+
+#: modules/MyProfile/Views/page.php
+msgid "Photo preview"
+msgstr ""
+
+#: modules/MyProfile/Views/page.php
+msgid "Zoom in"
+msgstr ""
+
+#: modules/MyProfile/Views/page.php
+msgid "Zoom out"
+msgstr ""
+
+#: modules/MyProfile/Views/page.php
+msgid "Rotate"
+msgstr ""
+
+#: modules/MyProfile/Views/page.php
+msgid "Upload a square profile photo. JPEG, PNG, or WebP up to 5 MB."
+msgstr ""
+
+#: modules/MyProfile/Views/page.php
+msgid "Choose image"
+msgstr ""
+
+#: modules/MyProfile/Views/page.php
+msgid "Save Photo"
+msgstr ""
+
+#: platforms/wordpress/Ajax/MyProfileAjaxHandler.php
+msgid "Profile photo updated successfully."
+msgstr ""
+
+#: platforms/wordpress/Ajax/MyProfileAjaxHandler.php
+#: platforms/wordpress/Media/StaffCoreImageUploader.php
+msgid "No image file was uploaded."
+msgstr ""
+
+#: platforms/wordpress/Media/StaffCoreImageUploader.php
+msgid "Image upload failed."
+msgstr ""
+
+#: platforms/wordpress/Media/StaffCoreImageUploader.php
+#, php-format
+msgid "Image must be smaller than %d MB."
+msgstr ""
+
+#: platforms/wordpress/Media/StaffCoreImageUploader.php
+msgid "Only JPEG, PNG, and WebP images are allowed."
+msgstr ""
+
+#: modules/LeaveRequests/Views/page.php
+msgid "View"
+msgstr ""
+
+#: modules/LeaveRequests/Views/page.php
+msgid "Leave request details"
+msgstr ""
+
+#: modules/LeaveRequests/Views/view-details.php
+msgid "Employee"
+msgstr ""
+
+#: modules/LeaveRequests/Views/view-details.php
+msgid "Leave type"
+msgstr ""
+
+#: modules/LeaveRequests/Views/view-details.php
+msgid "Start date"
+msgstr ""
+
+#: modules/LeaveRequests/Views/view-details.php
+msgid "End date"
+msgstr ""
+
+#: modules/LeaveRequests/Views/view-details.php
+msgid "Total days"
+msgstr ""
+
+#: modules/LeaveRequests/Views/view-details.php
+msgid "Status"
+msgstr ""
+
+#: modules/LeaveRequests/Views/view-details.php
+msgid "Period"
+msgstr ""
+
+#: modules/LeaveRequests/Views/view-details.php
+msgid "Reason"
+msgstr ""
+
+#: modules/LeaveRequests/Views/view-details.php
+msgid "Notes"
+msgstr ""
+
+#: modules/LeaveRequests/Views/view-details.php
+msgid "Created"
+msgstr ""
+
+#: modules/LeaveRequests/Views/view-details.php
+msgid "Updated"
+msgstr ""
+
+#: modules/LeaveRequests/Views/page.php
+msgid "Close"
+msgstr ""
+
+#: ui/components/list-filter-actions.php
+#: ui/components/list-filter-reset-link.php
+msgid "Reset Filters"
+msgstr ""
+
+#: ui/components/list-filter-actions.php
+msgid "Apply Filters"
+msgstr ""
+
+#: ui/components/pro-upsell-link.php
+#: platforms/wordpress/Ajax/StaffCorePlanAjaxResponse.php
+msgid "Upgrade to Pro"
+msgstr ""
+
+#: ui/components/pro-upsell-card.php
+msgid "What's in Pro"
+msgstr ""
+
+#: ui/components/pro-upsell-card.php
+msgid "Upgrade to unlock the full HR platform — one-time purchase, no license key required."
+msgstr ""
+
+#: ui/components/pro-upsell-card.php
+msgid "Unlimited employees"
+msgstr ""
+
+#: ui/components/pro-upsell-card.php
+msgid "Documents"
+msgstr ""
+
+#: ui/components/pro-upsell-card.php
+msgid "Awards & recognition"
+msgstr ""
+
+#: ui/components/pro-upsell-card.php
+msgid "KPIs & performance reviews"
+msgstr ""
+
+#: ui/components/pro-upsell-card.php
+msgid "Backup & restore"
+msgstr ""
+
+#: ui/components/pro-upsell-card.php
+msgid "Biometric attendance sync"
+msgstr ""
+
+#: ui/components/pro-upsell-card.php
+msgid "Upgrade to Pro ($39)"
+msgstr ""
+
+#: modules/Users/Views/page.php
+msgid "Bulk link is available in MF StaffCore Pro."
+msgstr ""
+

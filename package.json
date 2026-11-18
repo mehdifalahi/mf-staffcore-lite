@@ -1,0 +1,13 @@
+{
+    "name": "mf-staffcore-lite",
+    "private": true,
+    "description": "Build assets for MF StaffCore (Tabler UI)",
+    "scripts": {
+        "postinstall": "node scripts/copy-tabler.js",
+        "build:ui": "node scripts/copy-tabler.js"
+    },
+    "dependencies": {
+        "@tabler/core": "1.4.0",
+        "@tabler/icons-webfont": "3.34.0"
+    }
+}
